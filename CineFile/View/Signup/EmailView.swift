@@ -84,14 +84,19 @@ struct EmailView: View {
                     }
                 }
                 .frame(height: 280)
+                .border(.red)
 
                 Spacer()
+                .frame(
+                    height: 290
+                )
 
             }  // aqui tem o conteúdo da página de login, o que vem antes é só o fundo animado
             .padding(24)
             .frame(
                 width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 124
             )
+            .border(.red)
         }
         .enableInjection()
     }
