@@ -10,6 +10,7 @@ struct EmailView: View {
             .ignoresSafeArea()
 
             VStack(alignment: .leading) {
+                Spacer()
                 VStack(alignment: .leading, spacing: 14.0) {
                     Text("Crie sua conta")
                         .font(.title)
@@ -18,11 +19,11 @@ struct EmailView: View {
 
                     HStack(spacing: 3) {
                         Text("Já possui sua conta?")
-                            .font(.caption)
+                            .font(.system(size: 16))
                             .foregroundColor(.white)
 
                         Text("Fazer login")
-                            .font(.caption)
+                            .font(.system(size: 16))
                             .foregroundColor(.cta)
                             .underline()
                     }  //text abaixo do crie sua conta
@@ -32,24 +33,44 @@ struct EmailView: View {
 
                     VStack(alignment: .leading) {
                         Text("Endereço de email")
-                            .font(.caption)
+                            .font(.system(size: 15))
                             .foregroundColor(.white)
+                            .padding(.bottom, 8)
 
                         TextField(text: $userEmail) {
-                            Text("Seu email aqui")
+                            Text("Email")
                                 .foregroundColor(.gray.opacity(0.9))
-                                .font(.caption)
+                                .font(.system(size: 16))
                         }
-                        .font(.caption)
-                        .padding(8)
+                        .font(.system(size: 16))
+                        .padding(12)
                         .foregroundColor(.white)
-                        .cornerRadius(14)
+                        .cornerRadius(8)
                         .overlay(
-                            RoundedRectangle(cornerRadius: 4)
+                            RoundedRectangle(cornerRadius: 8)
                                 .stroke(Color.white, lineWidth: 0.5)
                         )
-                    }
+                    } .padding(.bottom, 40)
+                    Button {
 
+                    }
+                    label: {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 99)
+                                .stroke(Color.accent, lineWidth: 0.5)
+                                .fill(.accent)
+
+                            Text("Continuar")
+                                .font(.system(size: 15))
+                                .bold   ()
+                                .foregroundColor(.white)
+                                .padding(.leading, 96)
+                                .padding(.trailing, 96)
+                                .padding(.top, 12)
+                                .padding(.bottom, 12)
+                            
+                        }
+                    }
                     HStack {
 
                         Rectangle()
@@ -57,7 +78,7 @@ struct EmailView: View {
                             .foregroundColor(.gray)
 
                         Text("ou")
-                            .font(.caption)
+                            .font(.system(size: 12))
                             .foregroundColor(.gray)
 
                         Rectangle()
@@ -73,19 +94,26 @@ struct EmailView: View {
                                 .stroke(Color.white, lineWidth: 0.5)
                                 .fill(.white)
 
-                            Text(" Continue pela Apple")
-                                .font(.caption)
-                                .foregroundColor(.black)
-                                .padding(.leading, 96)
-                                .padding(.trailing, 96)
-                                .padding(.top, 8)
-                                .padding(.bottom, 8)
+                            HStack (alignment: .center) {
+                                Image(systemName: "applelogo")
+                                    .font(.system(size: 16))
+                                    .foregroundColor(.black)
+                                    .padding(.leading, 96)
+
+                                Text("Continue pela Apple")
+                                    .font(.system(size: 15))
+                                    .foregroundColor(.black)
+                                    .padding(.trailing, 96)
+                                    .padding(.top, 12)
+                                    .padding(.bottom, 12)
+                            }
                         }
                     }
                 }
                 .frame(height: 280)
 
                 Spacer()
+                    .frame(height: 208)
 
             }  // aqui tem o conteúdo da página de login, o que vem antes é só o fundo animado
             .padding(24)
