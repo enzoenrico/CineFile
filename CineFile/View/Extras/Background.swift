@@ -11,7 +11,7 @@ struct Background: View {
         } else if let newHeight = size.height {
             self.size = (width: UIScreen.main.bounds.width, height: newHeight)
         } else {
-            self.size = (width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+            self.size = (width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 2 )
         }
     }
 

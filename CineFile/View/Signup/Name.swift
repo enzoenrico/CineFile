@@ -1,15 +1,17 @@
 import SwiftUI
 
 struct NameView: View {
+    @AppStorage("cineFile_UserName") private var app_username  = ""
     @State var userName = ""
+    // Binding to control the selected tab in the parent SignupView
+    @Binding var selectedTabIndex: Int
+    let totalTabs: Int // To prevent going out of bounds
+
     var body: some View {
         ZStack {
-            Background(
-                size: (width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-            )
-            .ignoresSafeArea()
-
+            // Background is handled by SignupView
             VStack(alignment: .leading) {
+                Spacer()
                 VStack(alignment: .leading, spacing: 14.0) {
                     Text("Crie sua conta")
                         .font(.title)
@@ -18,71 +20,61 @@ struct NameView: View {
 
                     Spacer()
                         .frame(height: 20)
-                    
+
                     HStack(spacing: 4) {
                         Text("2 de 3 passos")
                             .font(.system(size: 15))
                             .foregroundColor(.gray)
-
-                    }  //text abaixo do crie sua conta
-
-                    
+                    }
 
                     VStack(alignment: .leading) {
-                        Text("Crie sua senha")
+                        Text("Crie seu nome de usuário") // Changed from "Crie sua senha"
                             .font(.system(size: 15))
                             .foregroundColor(.white)
+                            .padding(.bottom, 8) // Added padding for consistency
 
-                        TextField(text: $userName) {
-                            Text("Senha")
-                                .foregroundColor(.gray.opacity(0.9))
-                                .font(.system(size: 16))
-                        }
-                        .font(.system(size: 16))
-                        .padding(12)
-                        .foregroundColor(.white)
-                        .cornerRadius(8)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.white, lineWidth: 0.5)
-                        )
-                        .padding (.bottom, 28)
+                        TextField("Nome de usuário", text: $userName) // Placeholder directly in TextField
+                            .autocapitalization(.none)
+                            .disableAutocorrection(true)
+                            .font(.system(size: 16))
+                            .padding(12)
+                            .foregroundColor(.white)
+                            .background(Color.white.opacity(0.1))
+                            .cornerRadius(8)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.white, lineWidth: 0.5)
+                            )
                     }
+                    .padding(.bottom, 28) // Consistent padding
 
-                   
                     Button {
-
-                    } label: {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 99)
-                                .stroke(Color.accent, lineWidth: 0.5)
-                                .fill(.accent)
-
-                            Text("Continuar")
-                                .font(.system(size: 15))
-                                .bold   ()
-                                .foregroundColor(.white)
-                                .padding(.leading, 96)
-                                .padding(.trailing, 96)
-                                .padding(.top, 8)
-                                .padding(.bottom, 8)
-                            
+                        // Go to the next tab (PasswordView)
+                        app_username = userName
+                        if selectedTabIndex < totalTabs - 1 {
+                            withAnimation {
+                                selectedTabIndex += 1
+                            }
+                        } else {
+                            // This case should ideally not be reached if totalTabs is correct
+                            print("Trying to navigate beyond the last tab from NameView.")
                         }
+                    } label: {
+                        Text("Continuar")
+                            .font(.system(size: 15))
+                            .bold()
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 12)
                     }
-                    .frame(height: 42)
+                    .background(Color.accentColor) // Use accent color
+                    .cornerRadius(99)
                 }
-                .frame(height: 282)
-                
-
-                
-        Spacer()
-                    .frame(height: 208)
-
-            }  // aqui tem o conteúdo da página de login, o que vem antes é só o fundo animado
-            .padding(24)
-            .frame(
-                width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 124
-            )
+                // Removed fixed frame height to allow content to define its size
+                // .frame(height: 282)
+                Spacer() // Pushes content towards the center/top
+            }
+            .padding(24) // Padding for the main content VStack
         }
         .enableInjection()
     }
@@ -92,8 +84,10 @@ struct NameView: View {
     #endif
 }
 
-#Preview {
-    NameView()
+// Update Preview for NameView
+struct NameView_Previews: PreviewProvider {
+    static var previews: some View {
+        NameView(selectedTabIndex: .constant(1), totalTabs: 3)
+            .background(Background()) // Add background for context
+    }
 }
-
-

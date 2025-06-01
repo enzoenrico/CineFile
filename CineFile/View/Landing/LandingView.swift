@@ -14,10 +14,10 @@ struct LandingView: View {
                 .ignoresSafeArea()
             ScrollView(.vertical) {
                 VStack {  // This is the main VStack within the ScrollView
-                    Image("filme1")
+                    Image("image")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: UIScreen.main.bounds.width, height: 418)
+                        .frame(width: UIScreen.main.bounds.width, height: 480)
                         .clipped()
                     VStack {
                         ZStack {
@@ -80,15 +80,10 @@ struct LandingView: View {
                     }
                     //MARK: abaixo da imagem
                     VStack(spacing: 10) {
-                        HStack {
-                            Text("Os Incríveis")
-                                .font(.title)
-                                .foregroundColor(.white)
-                                .bold()
-                            Image(systemName: "star.fill")
-                                .foregroundColor(.cta)
-                                .font(.title2)
-                        }
+                        Text("Os Incríveis")
+                            .font(.title)
+                            .foregroundColor(.white)
+                            .bold()
 
                         Text("2004 | Direção: Brad Bird | Roteiro: Brad Bird")
                             .font(.body)
@@ -99,7 +94,6 @@ struct LandingView: View {
                         Button {
 
                         } label: {
-
                             HStack {
                                 Image(systemName: "info.circle")
                                     .bold()
@@ -116,6 +110,7 @@ struct LandingView: View {
                         .foregroundColor(.white)
                         .background(.accent)
                         .cornerRadius(20)
+                        .disabled(true)
 
                         Spacer()
                             .frame(height: 16)
@@ -139,11 +134,10 @@ struct LandingView: View {
                     }
 
                 }
-                .ignoresSafeArea()
-                .offset(y: -(418.0 / 6.0))  
+                // .ignoresSafeArea()
+                .offset(y: -(418.0 / 6.0))
             }
         }
-        .navigationBarBackButtonHidden(true)
         .padding()
         .enableInjection()
     }

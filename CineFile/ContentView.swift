@@ -11,18 +11,28 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var isSignedUp = false
     var body: some View {
         ZStack {
-            Background()
-            NavigationStack {
-                NavigationLink(destination: EmailView()) {
-                    Text("cadastro / login")
+                // Use a state variable to control navigation
+                NavigationView {
+                    SignupView(
+                        onSignupCompleted: {
+                            // Navigate to HomeView when signup is completed
+                            // This can be done by toggling a state variable
+                            isSignedUp = true
+                        }
+                    )
+                    .background(
+                        NavigationLink(
+                            destination: HomeView(),
+                            isActive: $isSignedUp,
+                            label: { EmptyView() }
+                        )
+                        .hidden()
+                        .navigationBarBackButtonHidden(true)
+                    )
                 }
-                NavigationLink(destination: LandingView()) {
-                    Text("landing")
-                }
-
-            }
         }
         .enableInjection()
     }
