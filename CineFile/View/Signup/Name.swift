@@ -33,7 +33,7 @@ struct NameView: View {
                             .font(.system(size: 15))
                             .foregroundColor(.white)
 
-                        TextField(text: $userName) {
+                        SecureField(text: $userName) {
                             Text("Senha")
                                 .foregroundColor(.gray.opacity(0.9))
                                 .font(.system(size: 16))

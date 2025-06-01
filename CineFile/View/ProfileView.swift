@@ -64,7 +64,7 @@ struct ProfileView: View {
                     } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 99)
-                                .stroke(validateButton() ? Color.accentColor : Color.gray, lineWidth: 0.5)
+                                .stroke(validateButton() ? Color.accentColor : Color.white, lineWidth: 0.5)
                             
                                 .fill(validateButton() ? Color.accent : Color.gray.opacity(0))
                             
