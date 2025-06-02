@@ -30,6 +30,7 @@ struct LandingView: View {
                                     HStack {
                                         ForEach(1...15, id: \.self) { _ in
                                             Image(systemName: "staroflife.fill")
+                                                .foregroundColor(.lightPink)
                                                 .padding(.leading)
                                                 .padding(.trailing)
                                             Text("filézinho em destaque")
@@ -141,6 +142,7 @@ struct LandingView: View {
                         LazyVStack(spacing: 10) {
                             ForEach($movies) { $movie in
                                 MoviePreview(movie: movie)
+                                    .frame(width: 360, height: 250)
                             }
                         }
                     }

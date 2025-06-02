@@ -4,7 +4,7 @@ struct MovieModel: Identifiable, Hashable {
 	let id = UUID()
 	let title: String
 	let year: Int
-	let imageURL: String
+	var imageURL: String
 	let description: String
 	let production: [String]
 

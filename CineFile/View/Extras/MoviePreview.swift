@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MoviePreview: View {
-	let movie: MovieModel
+	@State var movie: MovieModel
 
 	var body: some View {
 		NavigationLink(destination: DetailsView(movie: movie)) {
@@ -57,7 +57,7 @@ struct MoviePreview: View {
 
 				}
 				// .background(.regularMaterial.blendMode(.color))
-				.frame(width: 360, height: 250)
+				// .frame(width: 360, height: 250)
 				.cornerRadius(10)
 
 				Image(systemName: "star.fill")

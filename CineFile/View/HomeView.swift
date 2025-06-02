@@ -25,12 +25,17 @@ struct HomeView: View {
                     }
                     .tag(0)  // Tag for LandingView
 
-                // Add other main tabs here if needed, e.g.:
+                SearchView()
+                .tabItem{
+                    Label("Search", systemImage: "magnifyingglass")
+                }
+
                 ProfileView()
                     .tabItem {
                         Label("Profile", systemImage: "person.fill")
                     }
                     .tag(1)
+                    
             }
             .accentColor(.cta)
         }
