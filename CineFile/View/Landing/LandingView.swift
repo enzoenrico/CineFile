@@ -86,7 +86,7 @@ struct LandingView: View {
                             .bold()
 
                         Text("2004 | Direção: Brad Bird | Roteiro: Brad Bird")
-                            .font(.body)
+                            .font(.system(size: 12))
                             .fontWeight(.light)
                             .foregroundColor(.white)
 
@@ -97,7 +97,7 @@ struct LandingView: View {
                             HStack {
                                 Image(systemName: "info.circle")
                                     .bold()
-                                Text("Ver sinópse")
+                                Text("Ver sinopse")
                                     .font(.system(size: 15))
                                     .bold()
                             }
