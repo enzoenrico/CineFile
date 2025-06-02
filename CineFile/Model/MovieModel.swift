@@ -6,7 +6,16 @@ struct MovieModel: Identifiable, Hashable {
 	let year: Int
 	let imageURL: String
 	let description: String
-	let direction: [String]
 	let production: [String]
-	let liked_by: [UUID]?
+
+	var category: [String]
+	var streaming: [String]
+	var imdb: String
+	var direction: String
+
+	var rating: Int
+
+	var isFavorite: Bool = false
+	var isSeen: Bool = false
+
 }

@@ -1,34 +1,31 @@
 import SwiftUI
 
 struct DetailsView: View {
-    @State var filmDetails: String = ""
+    @State var movie: MovieModel
     var body: some View {
         ZStack {
             Background()
-            
-            VStack{
-                Image("image")
+
+            VStack {
+                Image(movie.imageURL)
                     .resizable()
-                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2)
-                
-                
-                
-                    
+                    .frame(
+                        width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 2
+                    )
+                    .scaledToFill()
+                    .ignoresSafeArea()
+
                 VStack {
                     VStack(alignment: .leading) {
-                        Text("Os incríveis")
+                        Text(movie.title)
                             .font(.system(size: 24))
                             .foregroundColor(.white)
                             .bold()
-                            
-                        
-                        TextField(text: $filmDetails) {
-                            Text("2004 | Direção: Brad Bird | Roteiro: Brad Bird")
-                                .foregroundColor(.white)
-                                .font(.system(size: 12))
-                                
-                            
-                        }
+
+                        Text("\(String( movie.year )) | Direção: \(movie.direction) | Roteiro: \(movie.production)")
+                            .foregroundColor(.white)
+                            .font(.system(size: 12))
+
                         HStack(alignment: .center, spacing: 0) {
                             ZStack(alignment: .leading) {
                                 Image(systemName: "person.circle.fill")
@@ -39,7 +36,6 @@ struct DetailsView: View {
                                     .foregroundColor(.blue)
                                     .offset(x: 0)  // Adjust if actual image sizes differ
 
-                                
                             }
                             .frame(width: 40)  // Example if you calculate the exact width
 
@@ -47,70 +43,66 @@ struct DetailsView: View {
                                 .font(.caption2)
                                 .foregroundColor(.cta)
                         }
-                        .padding(.leading)
-                        .padding(.trailing)
-                        .enableInjection()
+                        .border(.blue)
                     }
-                    .padding (.bottom, 24)
-                    }
-                    
-                    
-                    VStack(alignment: .leading) {
-                        Text("Depois do governo banir o uso de superpoderes, o maior herói do planeta, o Sr. Incrível, vive de forma pacata com sua família. Apesar de estar feliz com a vida doméstica, o Sr. Incrível ainda sente falta dos tempos em que viveu como super-herói, e sua grande chance de entrar em ação novamente surge quando um velho inimigo volta a atacar. Só que agora ele precisa contar com a ajuda de toda a família para vencer o vilão.")
-                            .font(.system(size: 12))
-                            .foregroundColor(.white)
-                        
-                    }
-                    Button {
-                        
-                    } label: {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 99)
-                                .fill(Color.accent)
-                            
-                            HStack {
-                                Image(systemName: "play")
-                                    .foregroundColor(Color.white)
-                                    .padding(.leading, 96)
-                                
-                                Text("Assistir agora")
-                                    .font(.system(size: 15))
-                                    .bold   ()
-                                    .foregroundColor(Color.white)
-                                    .padding(.trailing, 96)
-                                    .padding(.top, 8)
-                                    .padding(.bottom, 8)
-                                
-                                
-                            }
-                            
-                            
-                        }
-                    } .frame(height: 42)
-                        .disabled(true)
+                    .padding(.bottom, 24)
+
+                    Text(
+                        movie.description
+                    )
+                    .font(.system(size: 12))
+                    .foregroundColor(.white)
+
                 }
-                .padding(24)
-                .padding(.bottom, 97)
-                    
-                
-                
-                
-                Spacer()
-            } .ignoresSafeArea()
-            
-        Image(systemName: "star.fill")
-            .font(.system(size: 40))
-            .foregroundColor(.white)
-            .padding(.leading, 320)
-            .padding(.bottom, 30)
-            
+                .padding()
+                .border(.blue)
+
+                Button {
+
+                } label: {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 99)
+                            .fill(Color.accent)
+
+                        HStack {
+                            Image(systemName: "play")
+                                .foregroundColor(Color.white)
+                                .padding(.leading, 96)
+
+                            Text("Assistir agora")
+                                .font(.system(size: 15))
+                                .bold()
+                                .foregroundColor(Color.white)
+                                .padding(.trailing, 96)
+                                .padding(.top, 8)
+                                .padding(.bottom, 8)
+
+                        }
+
+                    }
+                }
+                .frame(height: 42)
+            }
+            .padding(24)
+            .padding(.bottom, 97)
+
+            Image(systemName: movie.isFavorite ? "star.fill" : "star")
+                .font(.system(size: 36))
+                .foregroundColor(movie.isFavorite ? .cta : .white)
+                .offset(x: 150)
+                .onTapGesture {
+                    movie.isFavorite.toggle()
+                }
+
         }
-        
+        .ignoresSafeArea()
+        .enableInjection()
+
     }
 
+    #if DEBUG
+        @ObserveInjection var forceRedraw
+    #endif
 
-
-#Preview {
-    DetailsView()
 }
 

@@ -1,7 +1,162 @@
 import Foundation
 
-struct MovieData {
-	var movies: [MovieModel] = [
-			
-	]
+extension Array where Element == MovieModel {
+    static func sample() -> [MovieModel] {
+        [
+            MovieModel(
+                title: "Tudo em Todo o Lugar ao Mesmo Tempo",
+                year: 2022,
+                imageURL: "filme1",
+                description: "Uma imigrante chinesa de meia idade se envolve em uma aventura louca, onde só ela pode salvar o mundo explorando outros universos que se conectam com as vidas que ela poderia ter levado",
+                production: [],
+                category: ["Ação", "Aventura", "Comédia"],
+                streaming: ["amazon", "disney-plus"],
+                imdb: "7.8 / 10",
+                direction: "Dan Kwan, Daniel Scheinert",
+                rating: 0,
+                isFavorite: false,
+                isSeen: false
+            ),
+            MovieModel(
+                title: "A Vastidão da Noite",
+                year: 2019,
+                imageURL: "filme9",
+                description: "Em uma noite de 1950, na cidade de Cayuga, Novo México, dois jovens ouvem uma misteriosa frequência de áudio e saem em busca de sua origem.",
+                production: [],
+                category: ["Drama", "Sci-Fi", "Suspense"],
+                streaming: ["amazon", "max"],
+                imdb: "6.7 / 10",
+                direction: "Andrew Patterson",
+                rating: 0,
+                isFavorite: false,
+                isSeen: false
+            ),
+            MovieModel(
+                title: "As Passivonas",
+                year: 2023,
+                imageURL: "filme11",
+                description: "Duas alunas não populares do último ano do ensino médio criam um clube da luta para tentar impressionar e conquistar líderes de torcida.",
+                production: [],
+                category: ["Comédia"],
+                streaming: ["amazon", "apple-tv"],
+                imdb: "N/A",
+                direction: "Emma Seligman",
+                rating: 0,
+                isFavorite: false,
+                isSeen: false
+            ),
+            MovieModel(
+                title: "Os Incríveis",
+                year: 2004,
+                imageURL: "image",
+                description: "Depois do governo banir o uso de superpoderes, o maior herói do planeta, o Sr. Incrível, vive de forma pacata com sua família. Apesar de estar feliz com a vida doméstica, o Sr. Incrível ainda sente falta dos tempos em que viveu como super-herói, e sua grande chance de entrar em ação novamente surge quando um velho inimigo volta a atacar. Só que agora ele precisa contar com a ajuda de toda a família para vencer o vilão.",
+                production: [],
+                category: ["Animação", "Ação", "Aventura", "Comédia"],
+                streaming: ["disney-plus", "amazon"],
+                imdb: "8.0 / 10",
+                direction: "Brad Bird",
+                rating: 0,
+                isFavorite: false,
+                isSeen: false
+            ),
+            MovieModel(
+                title: "O Feitiço de Áquila",
+                year: 1985,
+                imageURL: "image17",
+                description: "O ladrão Gaston escapa da masmorra medieval de Aquila através da latrina. Os soldados estão prestes a matá-lo quando Navarra o salva. Navarra, viajando com seu falcão animado, planeja matar o bispo de Áquila com a ajuda de Gaston.",
+                production: [],
+                category: ["Fantasia", "Aventura", "Romance"],
+                streaming: ["apple-tv", "max"],
+                imdb: "7.0 / 10",
+                direction: "Richard Donner",
+                rating: 0,
+                isFavorite: false,
+                isSeen: false
+            ),
+            MovieModel(
+                title: "Os Serviços de Entrega da Kiki",
+                year: 1989,
+                imageURL: "filme16",
+                description: "Por ordem de sua mãe, Kiki parte para um aprendizado de um ano, acompanhada por seu gato preto. A um comando de sua vassoura mágica, ela vai parar na charmosa cidadezinha de Moreoastal. Infelizmente, os hotéis locais não aceitam bruxas e a polícia a flagra fazendo algumas travessuras.",
+                production: [],
+                category: ["Animação", "Fantasia", "Aventura"],
+                streaming: ["netflix", "amazon"],
+                imdb: "7.8 / 10",
+                direction: "Hayao Miyazaki",
+                rating: 0,
+                isFavorite: false,
+                isSeen: false
+            ),
+            MovieModel(
+                title: "Cisne Negro",
+                year: 2010,
+                imageURL: "filme2",
+                description: "Uma esforçada bailarina luta para manter sua sanidade após obter o papel principal no Lago dos Cisnes de Tchaikovsky.",
+                production: [],
+                category: ["Drama", "Suspense"],
+                streaming: ["netflix", "amazon", "max"],
+                imdb: "8.0 / 10",
+                direction: "Darren Aronofsky",
+                rating: 0,
+                isFavorite: false,
+                isSeen: false
+            ),
+            MovieModel(
+                title: "Barbie e a Princesa e a Plebeia",
+                year: 2004,
+                imageURL: "filme12",
+                description: "Uma plebeia, moradora de um vilarejo, é muito parecida com a princesa do reino. Os destinos das duas se cruzam quando a princesa é sequestrada, e a moça humilde usa sua incrível semelhança com ela para tentar salvar das mãos do vilão.",
+                production: [],
+                category: ["Animação", "Aventura", "Comédia"],
+                streaming: ["netflix", "globoplay"],
+                imdb: "6.8 / 10",
+                direction: "William Lau",
+                rating: 0,
+                isFavorite: false,
+                isSeen: false
+            ),
+            MovieModel(
+                title: "O Show de Truman: O Show da Vida",
+                year: 1998,
+                imageURL: "filme4",
+                description: "Truman Burbank é um pacato vendedor de seguros que leva uma vida simples com sua esposa Meryl Burbank. Porém, algumas coisas ao seu redor fazem com que ele passe a estranhar sua cidade, seus supostos amigos e até sua mulher. Após conhecer a misteriosa Lauren, ele fica intrigado e acaba descobrindo que toda sua vida foi monitorada por câmeras e transmitida em rede nacional.",
+                production: [],
+                category: ["Comédia", "Drama", "Sci-Fi"],
+                streaming: ["amazon", "apple-tv"],
+                imdb: "8.2 / 10",
+                direction: "Peter Weir",
+                rating: 0,
+                isFavorite: false,
+                isSeen: false
+            ),
+            MovieModel(
+                title: "Spirit: O Corcel Indomável",
+                year: 2002,
+                imageURL: "filme5",
+                description: "Animação sobre a amizade entre um menino indígena e um cavalo indomável apaixonado por uma égua. Ambientada no Velho Oeste americano, mostra o impacto do processo civilizatório na vida dos três e também na amizade que construíram.",
+                production: [],
+                category: ["Animação", "Aventura"],
+                streaming: ["netflix", "amazon"],
+                imdb: "7.2 / 10",
+                direction: "Kelly Asbury, Lorna Cook",
+                rating: 0,
+                isFavorite: false,
+                isSeen: false
+            ),
+            MovieModel(
+                title: "O Labirinto do Fauno",
+                year: 2006,
+                imageURL: "filme6",
+                description: "Em 1944, na Espanha, a jovem Ofélia e sua mãe doente chegam ao posto do novo marido de sua mãe, um sádico oficial do exército que está tentando reprimir uma guerrilheira. Enquanto explorava um labirinto antigo, Ofélia encontra o Pan fauno, que diz que a menina é uma lendária princesa perdida e que ela precisa completar três tarefas perigosas a fim de se tornar imortal.",
+                production: [],
+                category: ["Sci-Fi", "Drama"],
+                streaming: ["amazon", "max"],
+                imdb: "8.2 / 10",
+                direction: "Guillermo del Toro",
+                rating: 0,
+                isFavorite: false,
+                isSeen: false
+            ),
+        ]
+    }
 }

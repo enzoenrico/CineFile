@@ -1,6 +1,12 @@
 import SwiftUI
 
 struct FriendsFavorites: View {
+	let n: Int  
+	
+	init(n: Int?) {
+		self.n = n ?? 10
+	}
+
 	var body: some View {
 		HStack(alignment: .center, spacing: 0) {
 			ZStack(alignment: .leading) {
@@ -17,7 +23,7 @@ struct FriendsFavorites: View {
 			}
 			.frame(width: 40)  // Example if you calculate the exact width
 
-			Text("Nat e 10 outros amigos recomendam esse filme")
+			Text("\(String(n)) amigos recomendam esse filme, é filé!")
 				.font(.caption2)
 				.foregroundColor(.cta)
 		}

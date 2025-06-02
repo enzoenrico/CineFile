@@ -41,9 +41,14 @@ struct ScrollFilters: View {
 			}
 			.padding(.leading)
 			.padding(.trailing)
-			.padding(2)
+			.contentShape(Rectangle())
 		}
 		.frame(width: UIScreen.main.bounds.width)
 		.enableInjection()
 	}
+
+	#if DEBUG
+		@ObserveInjection var forceRedraw
+	#endif
+
 }

@@ -2,11 +2,13 @@ import SwiftUI
 
 struct LandingView: View {
     @State var filters = [
-        Filter(title: "Ver tudo", selected: false),
+        Filter(title: "Ver tudo", selected: true),
         Filter(title: "Em alta", selected: false),
         Filter(title: "Comédia", selected: false),
         Filter(title: "Só filé", selected: false),
     ]
+
+    @State var movies: [MovieModel] = Array.sample()
 
     var body: some View {
         ZStack {
@@ -28,7 +30,6 @@ struct LandingView: View {
                                     HStack {
                                         ForEach(1...15, id: \.self) { _ in
                                             Image(systemName: "staroflife.fill")
-                                                .foregroundColor(.lightPink)
                                                 .padding(.leading)
                                                 .padding(.trailing)
                                             Text("filézinho em destaque")
@@ -90,7 +91,7 @@ struct LandingView: View {
                             .fontWeight(.light)
                             .foregroundColor(.white)
 
-                        FriendsFavorites()
+                        FriendsFavorites(n: 10)
                         Button {
 
                         } label: {
@@ -115,21 +116,32 @@ struct LandingView: View {
                         Spacer()
                             .frame(height: 16)
 
-                        ScrollFilters(filters: filters)
-                            .padding(.bottom)
+                        HStack {
+                            Rectangle()
+                                .frame(height: 0.5)
+                                .foregroundColor(.gray)
 
-                        VStack(spacing: 10) {
-                            MoviePreview(
-                                movie: MovieModel(
-                                    title: "Os Incríveis",
-                                    year: 2004,
-                                    imageURL: "filme16",
-                                    description:
-                                        "Uma família de super-heróis tenta viver uma vida normal enquanto enfrenta vilões e salva o mundo.",
-                                    direction: ["Brad Bird"],
-                                    production: ["Pixar Animation Studios"],
-                                    liked_by: nil
-                                ))
+                            Text("Veja mais")
+                                .font(.system(size: 12))
+                                .foregroundColor(.gray)
+
+                            Rectangle()
+                                .frame(height: 0.5)
+                                .foregroundColor(.gray)
+                        }
+                        // .overlay(.gray)
+                        .frame(width: UIScreen.main.bounds.width - 50)
+
+                        Spacer()
+                            .frame(height: 16)
+
+                        ScrollFilters(filters: filters)
+                            .zIndex(2)
+
+                        LazyVStack(spacing: 10) {
+                            ForEach($movies) { $movie in
+                                MoviePreview(movie: movie)
+                            }
                         }
                     }
 
